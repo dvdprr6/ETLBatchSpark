@@ -1,4 +1,4 @@
-package com.etl.batch.spark.dao
+package com.etl.batch.spark.dao.dataframe
 
 import com.etl.batch.spark.connection.SparkSessionConnection
 import com.etl.batch.spark.util.Constants
