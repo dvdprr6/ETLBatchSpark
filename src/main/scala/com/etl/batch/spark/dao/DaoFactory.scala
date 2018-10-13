@@ -1,8 +1,8 @@
 package com.etl.batch.spark.dao
 
 object DaoFactory {
-  def getDao[DAO <: Dao](clazz: Class[DAO]): DAO = {
-    val dao: DAO = clazz.newInstance()
+  def getDao(clazz: Class[_ <: Dao]): Dao = {
+    var dao: Dao = clazz.newInstance()
     return dao
   }
 }
