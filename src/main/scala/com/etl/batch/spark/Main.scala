@@ -1,6 +1,6 @@
 package com.etl.batch.spark
 
-import com.etl.batch.spark.dao.{CalendarsDateDao, DaoFactory, FrequenciesDao, TripsDao}
+import com.etl.batch.spark.dao.dataframe.{CalendarsDateDataFrameDao, DataFrameDaoFactory, FrequenciesDataFrameDao, TripsDataFrameDao}
 import com.etl.batch.spark.enrich.trips.{EnrichTripsBuilderFactory, Trips}
 import com.etl.batch.spark.util.Constants
 
@@ -8,9 +8,9 @@ object Main extends App{
 
   Thread.sleep(5000)
 
-  val trips = DaoFactory.getDao(classOf[TripsDao]).get()
-  val calendar_dates = DaoFactory.getDao(classOf[CalendarsDateDao]).get()
-  val frequencies = DaoFactory.getDao(classOf[FrequenciesDao]).get()
+  val trips = DataFrameDaoFactory.getDao(classOf[TripsDataFrameDao]).get()
+  val calendar_dates = DataFrameDaoFactory.getDao(classOf[CalendarsDateDataFrameDao]).get()
+  val frequencies = DataFrameDaoFactory.getDao(classOf[FrequenciesDataFrameDao]).get()
 
   val enrichedTrips = EnrichTripsBuilderFactory.getTripsBuilder(classOf[Trips])
     .setTrips(trips).setCalendarDates(calendar_dates).setFrequencies(frequencies).build.enrich()
