@@ -31,7 +31,10 @@ object Main extends App{
     var enrichedStoptimes = EnrichStoptimesBuilderFactory.getStoptimesBuilder()
       .setEnrichedTrips(enrichedTripsDF).setStoptimes(stopTimesDF).build.enrich()
 
-    enrichedStoptimes.write.mode(SaveMode.Append).csv(Constants.ENRICHED_STOP_TIMES)
+    if(!enrichedStoptimes.take(1).isEmpty){
+      enrichedStoptimes.rdd.map(x => x.mkString(",")).saveAsTextFile(Constants.ENRICHED_STOP_TIMES)
+      //enrichedStoptimes.write.mode(SaveMode.Append).csv(Constants.ENRICHED_STOP_TIMES)
+    }
   }
 
   SparkConnection.getSparkStreaming.start()
