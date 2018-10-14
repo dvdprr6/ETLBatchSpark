@@ -12,8 +12,8 @@ class Trips extends EnrichTripsBuilder {
     return this
   }
 
-  override def setCalendarDates(calendarDate: DataFrame): EnrichTripsBuilder = {
-    this.calendarDates = calendarDate
+  override def setCalendarDates(calendarDates: DataFrame): EnrichTripsBuilder = {
+    this.calendarDates = calendarDates
     return this
   }
 
