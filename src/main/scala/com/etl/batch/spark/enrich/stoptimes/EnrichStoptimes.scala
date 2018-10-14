@@ -10,8 +10,7 @@ class EnrichStoptimes(builder: EnrichStoptimesBuilder) extends Enrich{
   var stoptimes: DataFrame = builder.stoptimes
 
   override def enrich(): DataFrame = {
-
-    /*
+    
     var enrichedStoptimes = enrichedTrips.join(stoptimes, Seq(Constants.TRIPS_TRIP_ID), "inner")
       .select(
         enrichedTrips(Constants.TRIPS_ROUTE_ID),
@@ -33,7 +32,7 @@ class EnrichStoptimes(builder: EnrichStoptimesBuilder) extends Enrich{
         stoptimes(Constants.STOP_TIMES_STOP_ID),
         stoptimes(Constants.STOP_TIMES_STOP_SEQUENCIES)
       )
-    */
+
     /*
     var enrichedStoptimes = stoptimes.join(enrichedTrips, enrichedTrips.col(Constants.TRIPS_TRIP_ID) === stoptimes.col(Constants.STOP_TIMES_TRIP_ID))
       .select(
@@ -58,6 +57,7 @@ class EnrichStoptimes(builder: EnrichStoptimesBuilder) extends Enrich{
       )
     */
 
+    /*
     enrichedTrips.createOrReplaceTempView("enrichedTrips")
     stoptimes.createOrReplaceTempView("stoptimes")
 
@@ -81,6 +81,7 @@ class EnrichStoptimes(builder: EnrichStoptimesBuilder) extends Enrich{
         ",s." + Constants.STOP_TIMES_DEPARTURE_TIME +
         ",s." + Constants.STOP_TIMES_STOP_ID +
         ",s." + Constants.STOP_TIMES_STOP_SEQUENCIES + " from enrichedTrips et join stoptimes s on et.trip_id = s.trip_id")
+     */
 
     return enrichedStoptimes
   }
