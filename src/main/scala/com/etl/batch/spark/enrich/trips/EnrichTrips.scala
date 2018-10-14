@@ -11,6 +11,7 @@ class EnrichTrips(builder: EnrichTripsBuilder) extends Enrich {
   var frequencies: DataFrame = builder.frequencies
 
   override def enrich(): DataFrame = {
+
     var enrichedTrips = trips.join(frequencies, Seq(Constants.TRIPS_TRIP_ID), "inner").join(calendarDates, Seq(Constants.TRIPS_SERVICE_ID), "inner")
       .select(
         trips(Constants.TRIPS_ROUTE_ID),
@@ -26,7 +27,8 @@ class EnrichTrips(builder: EnrichTripsBuilder) extends Enrich {
         calendarDates(Constants.CALENDAR_DATES_EXCEPTION_TYPE),
         frequencies(Constants.FREQUENCIES_START_TIME),
         frequencies(Constants.FREQUENCIES_END_TIME),
-        frequencies(Constants.FREQUENCIES_HEADWAY_SECS))
+        frequencies(Constants.FREQUENCIES_HEADWAY_SECS)
+      )
 
     return enrichedTrips
   }
