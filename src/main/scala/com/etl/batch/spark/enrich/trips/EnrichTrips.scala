@@ -4,6 +4,7 @@ import com.etl.batch.spark.enrich.Enrich
 import com.etl.batch.spark.util.Constants
 import org.apache.spark.sql.DataFrame
 
+// REFERENCE: https://gist.github.com/kencoba/1874015
 class EnrichTrips(builder: EnrichTripsBuilder) extends Enrich {
   var trips: DataFrame = builder.trips
   var calendarDates: DataFrame = builder.calendarDates
