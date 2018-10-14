@@ -21,6 +21,7 @@ object Main extends App{
   enrichedTripsDF.rdd.map(x => x.mkString(",")).saveAsTextFile(Constants.ENRICHED_TRIPS)
 
   var stopTimesDS = DaoFactory.getDao(classOf[StoptimesDao]).getDStream()
+
   var schema = SchemaGeneration.getSchema(Constants.STOP_TIMES_SCHEMA)
 
   stopTimesDS.foreachRDD{ rdd =>
