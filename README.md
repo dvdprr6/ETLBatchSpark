@@ -50,8 +50,36 @@ hadoop fs -rm -r $HDFS_ENRICHED_TRIPS_DIR
 hadoop fs -rm -r $HDFS_STOP_TIMES_TEST_DIR
 ```
 
+To hold the enriched stop times data the following external table need to be created in Hive and to point to the enriched stop times data set on the HDFS.
 
+```
+CREATE EXTERNAL TABLE IF NOT EXISTS ext_enriched_stop_times(
+    route_id                STRING,
+    service_id              STRING,
+    trip_id                 STRING,
+    trip_headsign           STRING,
+    direction_id            STRING,
+    shape_id                STRING,
+    wheelchair_accessible   STRING,
+    note_fr                 STRING,
+    note_en                 STRING,
+    `date`                  STRING,
+    exception_type          STRING,
+    start_time              STRING,
+    end_time                STRING,
+    headway_secs            STRING,
+    arrival_time            STRING,
+    departure_time          STRING,
+    stop_id                 STRING,
+    stop_sequence           STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+LOCATION '/user/vagrant/stm/gtfs/staging/enriched_stop_times'
+tblproperties('skip.header.line.count'='1');
+```
+## Build and Run
 
-## Installation Directory Setup
-
-Create a installation directory, in this installation this will include all the necessary scripts.
+Create the jar by runing ```sbt package``` in the root directory of the project. Copy it to the directory where the ```start.sh``` script is located and run ```start.sh```
