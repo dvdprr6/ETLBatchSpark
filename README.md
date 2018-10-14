@@ -82,4 +82,4 @@ tblproperties('skip.header.line.count'='1');
 ```
 ## Build and Run
 
-Create the jar by runing ```sbt package``` in the root directory of the project. Copy it to the directory where the ```start.sh``` script is located and run ```start.sh```
+Create the jar by runing ```sbt package``` in the root directory of the project. Copy it to the directory where the ```start.sh``` script is located and run ```start.sh```. Then run the ```copyStopTimesToHDFS.sh``` script during the streaming process to enrich the stop times with the enriched trips dataset.
