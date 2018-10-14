@@ -32,7 +32,7 @@ object Constants {
   val STOP_TIMES_STOP_ID: String = "stop_id"
   val STOP_TIMES_STOP_SEQUENCIES: String = "stop_sequence"
 
-  val STREAMING_INTERVAL: Int = 10
+  val STREAMING_INTERVAL: Int = 5
 
   val STOP_TIMES_SCHEMA: String = "trip_id,arrival_time,departure_time,stop_id,stop_sequence"
 }
