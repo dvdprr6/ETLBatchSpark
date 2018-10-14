@@ -10,6 +10,7 @@ object Constants {
   val ENRICHED_TRIPS: String = "hdfs://localhost:9000/user/vagrant/stm/gtfs/staging/enriched_trips/"
   val ENRICHED_STOP_TIMES: String = "hdfs://localhost:9000/user/vagrant/stm/gtfs/staging/enriched_stop_times/"
   val STOP_TIMES: String = "hdfs://localhost:9000/user/vagrant/stm/gtfs/staging/stop_times/"
+  val STOP_TIMES_TEST: String = "hdfs://localhost:9000/user/vagrant/stm/gtfs/staging/stop_times_test/"
 
   val TRIPS_ROUTE_ID: String = "route_id"
   val TRIPS_SERVICE_ID: String = "service_id"
