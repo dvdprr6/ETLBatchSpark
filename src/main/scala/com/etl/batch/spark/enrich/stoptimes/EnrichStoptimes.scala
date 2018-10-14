@@ -10,7 +10,7 @@ class EnrichStoptimes(builder: EnrichStoptimesBuilder) extends Enrich{
   var stoptimes: DataFrame = builder.stoptimes
 
   override def enrich(): DataFrame = {
-    
+
     var enrichedStoptimes = enrichedTrips.join(stoptimes, Seq(Constants.TRIPS_TRIP_ID), "inner")
       .select(
         enrichedTrips(Constants.TRIPS_ROUTE_ID),
