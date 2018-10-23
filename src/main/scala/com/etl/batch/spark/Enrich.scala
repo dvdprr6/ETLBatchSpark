@@ -4,7 +4,7 @@ import com.etl.batch.spark.util.Constants
 import org.apache.spark.sql.DataFrame
 
 object Enrich {
-  var enrichTrips = (trips: DataFrame, calendarDates: DataFrame, frequencies: DataFrame) => {
+  val enrichTrips = (trips: DataFrame, calendarDates: DataFrame, frequencies: DataFrame) => {
     trips.join(frequencies, Seq(Constants.TRIPS_TRIP_ID), "inner").join(calendarDates, Seq(Constants.TRIPS_SERVICE_ID), "inner")
       .select(
         trips(Constants.TRIPS_ROUTE_ID),
@@ -24,7 +24,7 @@ object Enrich {
       )
   }
 
-  var enrichStoptimes = (enrichedTrips: DataFrame, stoptimes: DataFrame) => {
+  val enrichStoptimes = (enrichedTrips: DataFrame, stoptimes: DataFrame) => {
     enrichedTrips.join(stoptimes, Seq(Constants.TRIPS_TRIP_ID), "inner")
       .select(
         enrichedTrips(Constants.TRIPS_ROUTE_ID),
